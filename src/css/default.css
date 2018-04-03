@@ -14,15 +14,14 @@ body{
 
 .page{
 display: flex;
-border: 1px solid red;
 height: 100vh;
 }
 .page > aside{
  width:300px;
- border-right:1px solid rgb(55, 0, 255);
 }
 .page > main{
-margin-left:20px;
+padding-left:20px;
+flex-grow: 1;
 }
 
 /*aside*/
@@ -62,6 +61,48 @@ padding:10px;
 }
 
 /*main*/
+.page > main{
+    padding-top:20px;
+    background: #d4d4d4;
+}
+.form{
+    font-size: 16px;
+}
+.form > .row{
+    margin:20px;
+    display: flex;    
+    flex-direction: row;
+}
+.form > .row > label{
+    width:4em;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right:5px;
+    
+}
+.form input[type=text]{
+    padding:5px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+.form input[type=button],
+.form input[type=submit],
+.form button{
+    height:30px;
+    padding-left:10px;
+    padding-right:10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    cursor: pointer;  
+    background: white;  
+}
+.form > .row.actions{
+    margin-left:calc(4em + 25px);
+}
+
+
+
 
 
 

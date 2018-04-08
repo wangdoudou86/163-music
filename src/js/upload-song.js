@@ -47,11 +47,14 @@
                         //    "key": "gogopher.jpg"
                         //  }
                         // 参考http://developer.qiniu.com/docs/v6/api/overview/up/response/simple-response.html
-    
                         var domain = up.getOption('domain');
                         var response = JSON.parse(info.response);
                         var sourceLink = 'http://' + domain + '/' + encodeURIComponent(response.key); //获取上传成功后的文件的Url
                         uploadStatus.textContent = sourceLink + ' ' + response.key
+                        window.eventHub.emit('upload',{
+                            key:response.key,
+                            link:sourceLink
+                        })
     
                     },
                     'Error': function (up, err, errTip) {

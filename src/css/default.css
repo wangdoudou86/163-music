@@ -34,6 +34,9 @@ font-size: 16px;
 text-align: center;
 padding:10px;
 }
+.newSong.active{
+    background: #d4d4d4;
+}
 #songList-container{
     flex-grow: 1;/*让区域向上下延伸，这样上传区域就到底部了*/
 }

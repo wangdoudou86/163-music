@@ -22,6 +22,15 @@
     let model = {
         data:{
             songs:[]
+        },
+        find(){
+            var query = new AV.Query('Song')
+            return query.find().then((songs)=>{
+            this.data.songs = songs.map((song)=>{
+                return {id:song.id,...song.attributes}
+            })  
+            // return songs  暂时加不加这句都没有影响
+            })
         }
     }
     let controller = {
@@ -29,10 +38,12 @@
             this.view = view
             this.model = model
             this.view.render(this.model.data)
+
             window.eventHub.on('create',(songData)=>{
-                console.log('songData')
-                console.log(songData)
                 this.model.data.songs.push(songData)
+                this.view.render(this.model.data)
+            })
+            this.model.find().then(()=>{
                 this.view.render(this.model.data)
             })
         }

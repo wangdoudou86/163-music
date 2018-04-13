@@ -5,7 +5,6 @@
             this.$el = $(this.el)
         },
         template: `
-        <h1>新建歌曲</h1>
             <form class="form">
                 <div class="row">
                     <label>
@@ -38,6 +37,11 @@
                 //这里千万不要忘了写赋值！！！
             })
             $(this.el).html(html) //把内容放进容器里
+            if(data.id){
+                $(this.el).prepend('<h1>编辑歌曲</h1>')
+            }else{
+                $(this.el).prepend('<h1>新建歌曲</h1>')
+            }
         },
         reset(){
             this.render()
@@ -68,6 +72,13 @@
             this.view.render(this.model.data)
             window.eventHub.on('upload', (data) => {
                 this.view.render(data)
+            })
+            window.eventHub.on('select',(data)=>{
+                this.view.render(data)
+            })
+            window.eventHub.on('new',()=>{
+                this.model.data = {}
+                this.view.render(this.model.data)
             })
         },
         bindEvents(){

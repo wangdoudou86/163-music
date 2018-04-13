@@ -33,6 +33,7 @@ flex-direction: column;
 font-size: 16px;
 text-align: center;
 padding:10px;
+cursor: pointer;
 }
 .newSong.active{
     background: #d4d4d4;
@@ -46,6 +47,7 @@ padding:10px;
 .songlist > li{
     border-bottom:1px solid #ddd;
     padding:10px;
+    cursor: pointer;
 }
 .songlist > li.active{
     background: #d4d4d4;

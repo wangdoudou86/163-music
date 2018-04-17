@@ -49,7 +49,7 @@
     }
     let model = {
         data:{name:'',singer:'',url:'',id:''},    
-        create(data) {
+        create(data) { //保存新建的数据
             var Song = AV.Object.extend('Song');
             var song = new Song();
             song.set('name', data.name);
@@ -61,6 +61,16 @@
             },  (error)=>{
                 console.error('没有保存成功')
             })
+        },
+        update(data){ //保存更新后的数据
+            var song = AV.Object.createWithoutData('Song', this.data.id)
+            song.set('name', data.name)
+            song.set('singer', data.singer)
+            song.set('url', data.url)
+            return song.save().then(()=>{               
+                Object.assign(this.data,data)
+                //把新的数据赋给this.model.data，这是更新的内容在列表上实时更新的关键一步       
+            })
         }  
     }
     let controller = {
@@ -70,32 +80,57 @@
             this.view.init()
             this.bindEvents()
             this.view.render(this.model.data)
-            window.eventHub.on('upload', (data) => {
-                this.view.render(data)
+            
+            window.eventHub.on('select',(data)=>{ //这一步把所选择歌曲的信息展示在表单中
+                this.model.data = data
+                this.view.render(this.model.data)//这里不用this.model.data，下面的this.model.data.id也不会更新
             })
-            window.eventHub.on('select',(data)=>{
-                this.view.render(data)
-            })
-            window.eventHub.on('new',()=>{
-                this.model.data = {}
+            window.eventHub.on('new', (data)=>{
+                if(this.model.data.id){
+                  this.model.data = {
+                    name: '', url: '', id: '', singer: ''
+                  }
+                }else{
+                  Object.assign(this.model.data, data)
+                }
                 this.view.render(this.model.data)
+              })
+        },
+        save(){ 
+            let needs = ['name', 'singer', 'url']
+            let data = {}
+            needs.map((string) => {
+                data[string] = this.view.$el.find(`input[name="${string}"]`).val()
+            })//把每个input里的值收集起来
+
+    
+            this.model.create(data) //把data里的数据保存到leancloud
+            .then(()=>{
+                this.view.reset()  //保存成功后清空表单                   
+                window.eventHub.emit('create', this.model.data)
             })
+        },
+        update(){
+            let needs = ['name', 'singer', 'url']
+            let data = {}
+            needs.map((string) => {
+                data[string] = this.view.$el.find(`input[name="${string}"]`).val()
+            })//把每个input里的值收集起来
+            this.model.update(data)
+            .then(()=>{
+                window.eventHub.emit('update',JSON.parse(JSON.stringify(this.model.data)))
+                //这里传的this.model.data是被点击的歌曲的信息，有id，新的data里没有id，但是this.model.update里已经把返回的数据更新了
+            })
+            
         },
         bindEvents(){
             this.view.$el.on('submit', 'form', (e) => { //事件委托，委托给form
                 e.preventDefault()
-                let needs = ['name', 'singer', 'url']
-                let data = {}
-                needs.map((string) => {
-                    data[string] = this.view.$el.find(`input[name="${string}"]`).val()
-                })//把每个input里的值收集起来
-
-        
-                this.model.create(data) //把data里的数据保存到leancloud
-                .then(()=>{
-                    this.view.reset()  //保存成功后清空表单                   
-                    window.eventHub.emit('create', this.model.data)
-                })
+                if(this.model.data.id){
+                    this.update()
+                }else{
+                    this.save()                   
+                }               
             })
         }
     }

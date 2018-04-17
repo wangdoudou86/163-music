@@ -8,13 +8,27 @@ input{font:inherit;}
 
 body{
     font-size:14px;
+    color: #dbdac8;
     line-height: 1.5;
+    font-family: "lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
 }
-/*layout*/
 
+/*layout*/
+#musicWrapper{
+    width:1022px;
+height: 100vh;
+    margin:0 auto;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+}
+.navbar{
+    height: 50px;
+    border-bottom:2px solid #b82525;
+    background: #232529;   
+}
 .page{
 display: flex;
-height: 100vh;
+height: calc(100vh - 50px);
+
 }
 .page > aside{
  width:300px;
@@ -24,44 +38,65 @@ padding-left:20px;
 flex-grow: 1;
 }
 
+/*navbar*/
+.navbar .navContainer{
+    display: flex;
+    align-items: center;
+    padding-top:7px;
+    padding-left:25px;
+}
+.navbar .logoImg{
+    width:35px;height:35px;
+    margin-right:2px;
+}
+.navbar .logoFont{
+    font-size:24px;
+    color: white;
+}
+
+
 /*aside*/
 .page > aside{
 display: flex;
 flex-direction: column;
+background: #232529;
+
 }
 .newSong{
 font-size: 16px;
 text-align: center;
 padding:10px;
 cursor: pointer;
+background: #232529;
+
 }
 .newSong.active{
-    background: #d4d4d4;
+    background: #16181c;
 }
 #songList-container{
     flex-grow: 1;/*让区域向上下延伸，这样上传区域就到底部了*/
 }
 .songlist{
-    border-top:1px solid #999;
+    /* border-top:1px solid #999; */
 }
 .songlist > li{
-    border-bottom:1px solid #ddd;
-    padding:10px;
+    /* border-bottom:1px solid #ddd; */
+    padding:10px 10px 10px 25px;
     cursor: pointer;
 }
 .songlist > li.active{
-    background: #d4d4d4;
+    background: #16181c;
 }
 .uploadArea{}
 .draggable{
     width: 300px;
-    border: 2px dashed #ddd;
-    border-radius: 10px;
+    border: 2px dashed rgba(221, 221, 221, 0.5);
+    border-radius: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding:40px 0;
+    padding:60px 0;
 }
 .clickable{
     cursor: pointer;
@@ -70,7 +105,7 @@ cursor: pointer;
 /*main*/
 .page > main{
     padding-top:20px;
-    background: #d4d4d4;
+    background: #16181c;
 }
 .form{
     font-size: 16px;

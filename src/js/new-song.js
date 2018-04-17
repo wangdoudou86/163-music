@@ -15,17 +15,18 @@
             this.model = model
             this.view.render(this.model.data)
             this.active()
-            window.eventHub.on('upload',()=>{
-                
+            window.eventHub.on('new',()=>{
+                this.active()       
             })
             window.eventHub.on('select',(data)=>{
                 this.deactive()
             })
-            $(this.view.el).on('click',this.active.bind(this)) //重点记住后半句
+            $(this.view.el).on('click',()=>{
+                window.eventHub.emit('new')
+            }) //重点记住后半句
         },
         active(){
-            $(this.view.el).addClass('active')
-            window.eventHub.emit('new')   //元素被点击时，执行active函数，同时触发new事件            
+            $(this.view.el).addClass('active')        
         },
         deactive(){
             $(this.view.el).removeClass('active')

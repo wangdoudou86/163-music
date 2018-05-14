@@ -1,0 +1,189 @@
+*{margin:0;padding:0;}
+*{box-sizing: border-box;}
+*::before{box-sizing: border-box;}
+*::after{box-sizing: border-box;}
+a{text-decoration: none;}
+ol,ul,li{list-style:none;}
+h1,h2,h3,h4,h5,h6{font-weight: normal;}
+
+body{
+    font:14px/1.5 Helvetica,sans-serif;
+    color: #333;
+    
+}
+/*topbar*/
+.sticky{
+    position:fixed;
+    top:0;left:0;
+    width:100%;
+    z-index: 1;
+}
+.sticky .topbar{
+    display: flex;
+  justify-content: space-between;
+  align-items: center;
+    background: #d43c33;
+    padding:17px 9px;
+   height: 64px;
+}
+.sticky section.topbar .logo>svg{
+    width:142px;
+    height: 25px;
+    vertical-align: top;
+}
+.sticky section.topbar .load{
+    width:80px;
+    height:32px;
+    border:1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 52px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+.sticky section.topbar a{
+    color: #fff;
+    font-size: 15px;
+}
+/*tabs-nav*/
+section.globalTabs{
+    height:40px;
+    background: white;
+}
+section.globalTabs ol.tabs-nav{
+    display: flex;
+    border-bottom:1px solid rgb(235, 235, 235);
+}
+ol.tabs-nav>li{
+    width:33.333%;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+}
+ol.tabs-nav>li>.text{
+    font-size:15px;
+    line-height: 40px;
+}
+ol.tabs-nav>li.active{
+    color:#d43c33;   
+}
+.sticky .bar{
+    height:2px;
+    background: #d43c33; 
+    margin-top:-1px;    
+}
+.sticky .bar.stage-1{
+    width:17%;    
+    margin-left:8%;
+}
+.sticky .bar.stage-2{
+    width:14%;    
+    margin-left:43%;
+}
+.sticky .bar.stage-3{
+    width:9%;    
+    margin-left:79%;
+}
+
+/*tab-content-page1*/
+/*推荐歌单*/
+.tab-content{
+    padding-top:125px;
+    background: #fcfcfd;
+}
+.tab-content .page-1 h2{
+    font-size:17px;
+    padding-left:9px;
+    line-height: 20px;
+    margin-bottom:14px;
+    position: relative;
+}
+.tab-content .page-1 h2::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -9px;
+    width: 2px;
+    height: 16px;
+    background-color: #d33a31;
+}
+.page-1 section.playlists{
+    margin-bottom:26px;
+}
+.page-1 section.playlists ol{
+    display: flex;
+    justify-content: space-between;   
+    flex-wrap: wrap;
+}
+.page-1 section.playlists ol>li{
+    width:32.8%;
+}
+.page-1 section.playlists ol>li img{
+    width:100%;
+    box-shadow: 0px 0px 1px 0px rgba(173,171,173,1);
+}
+.page-1 section.playlists ol>li p{
+    font-size:13px;
+    margin:-1px 2px 15px 7px;
+    overflow: hidden;
+    line-height: 1.2;
+}
+/*最新音乐*/
+.page-1 section.newSongs ol{
+    padding-top:3px;
+}
+.page-1 section.newSongs ol>li{
+    margin-left:9px;
+    border-bottom:0.5px solid rgba(0,0,0,0.1);
+    padding:7px 0;
+}
+.page-1 section.newSongs ol>li .songName{
+    font-size:17px;
+}
+.page-1 section.newSongs ol>li .singer{
+    font-size:12px;
+    color:#888;
+}
+/*footer*/
+.page-1 section.art{
+    background: url(../img/footer_bg.png); /*这个是相对于css文件的相对路径，不是对于html文件*/
+    background-position: center center;
+    background-size:cover;
+    margin-top:8px;
+    padding-top:80px;
+    padding-bottom:40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+section.art .logo svg{
+    width: 230px;
+    height:44px;
+}
+.page-1 section.art .link-wrapper{
+    width:338px;
+    border:1px solid #d33a31;
+    border-radius:30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:9px 0 5px 0;
+    padding:7px 0;
+}
+.page-1 section.art .link-wrapper a{
+    color:#d33a31;
+    font-size:16px;   
+}
+
+
+
+
+
+
+
+section.art .copyright{
+    font-size: 12px;
+    line-height: 16px;
+    transform: scale(0.75);
+}

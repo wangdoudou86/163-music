@@ -2,7 +2,7 @@
 <html lang="zh-Hans">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
     <title>我的云音乐</title>
     <link rel="stylesheet" href="./css/index.css">
 </head>
@@ -22,9 +22,9 @@
                     <li data-tab-name="page-3"><div class="text">搜索</div></li>                   
                 </ol>
             </section>
-            <div class="bar stage-1"></div>
+            <!-- <div class="bar stage-1"></div> -->
         </div>
-        <ol class="tab-content noCollapse">
+        <ol class="tab-content">
             <li class="page-1 active">
                 <section class="playlists">
                     <h2 class="sectionTitle">推荐歌单</h2>
@@ -205,11 +205,24 @@
                 </div>
             </li>
             <li class="page-3">
-                <input id="search" type="text" style="background:#EBECEC;">
-                <ol id="searchResult"></ol>
+                <form class="search-wrapper" action="#" method="get">
+                    <input id="search" class="search" type="text" value="搜索歌曲、歌手、专辑">
+                    <!-- <label class="holder">搜索歌曲、歌手、专辑</label> -->
+                </form>
+                <div class="searchList">
+                    <ol id="searchResult"></ol>
+                </div>
             </li>
         </ol>
     </div>
-
+    <script src="../node_modules/leancloud-storage/dist/av-min.js"></script>
+    <script src="./initializers/av.js"></script>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./js/admin/event-hub.js"></script>
+    <script src="./js/index/tabs.js"></script>
+    <script src="./js/index/page-1.js"></script>
+    <script src="./js/index/page-2.js"></script>
+    <script src="./js/index/page-3.js"></script>
+    
 </body>
 </html>

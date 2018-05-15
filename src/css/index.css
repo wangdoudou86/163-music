@@ -5,6 +5,7 @@
 a{text-decoration: none;}
 ol,ul,li{list-style:none;}
 h1,h2,h3,h4,h5,h6{font-weight: normal;}
+input,button{outline:none;border:0;}
 
 body{
     font:14px/1.5 Helvetica,sans-serif;
@@ -16,6 +17,7 @@ body{
     top:0;left:0;
     width:100%;
     z-index: 2;
+    background: white;
 }
 .sticky .topbar{
     display: flex;
@@ -44,44 +46,34 @@ body{
     font-size: 15px;
 }
 /*tabs-nav*/
-section.globalTabs{
-    height:40px;
-    background: white;
-}
-section.globalTabs ol.tabs-nav{
+.tabs-nav{
     display: flex;
-    border-bottom:1px solid rgb(235, 235, 235);
-}
-ol.tabs-nav>li{
-    width:33.333%;
+    border-bottom: 1px solid #CCCCCC;
+  }
+  .tabs-nav>li{
+    width: 33.333333%;
+    line-height: 20px;
     display: flex;
-  justify-content: center;
-  align-items: center;
-}
-ol.tabs-nav>li>.text{
-    font-size:15px;
-    line-height: 40px;
-}
-ol.tabs-nav>li.active{
-    color:#d43c33;   
-}
-.sticky .bar{
-    height:2px;
-    background: #d43c33; 
-    margin-top:-1px;    
-}
-.sticky .bar.stage-1{
-    width:17%;    
-    margin-left:8%;
-}
-.sticky .bar.stage-2{
-    width:14%;    
-    margin-left:43%;
-}
-.sticky .bar.stage-3{
-    width:9%;    
-    margin-left:79%;
-}
+    justify-content: center;
+    align-items: center;/*这个flex让红线往里缩，与文字一样长*/
+  }
+  .tabs-nav>li>.text{
+    padding: 10px 5px;
+    position: relative;
+    top: 1px;
+  }
+  .tabs-nav >li.active{
+    color: #D43C33;
+  }
+  .tabs-nav >li.active>.text::after{
+    content: '';
+    position: absolute;
+    height: 2px;
+    background: #D43C33;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
 
 /*tab-content-page1*/
 /*推荐歌单*/
@@ -95,14 +87,14 @@ ol.tabs-nav>li.active{
 .tab-content>li.active{
     display: block;
 }
-.noCollapse::before{
+/* .noCollapse::before{
     content:'';
     display: table;
   }
   .noCollapse::after{
     content:'';
     display: table;
-  }
+  } */
 .tab-content .page-1 h2{
     font-size:17px;
     padding-left:9px;
@@ -224,9 +216,6 @@ section.art .copyright{
     top:0;left:0;
     background-color: rgba(0,0,0,.2);
 }
-.page-2 .hotLists{
-
-}
 .page-2 .hotLists>li{  
     display: flex;
     align-items: center;
@@ -257,4 +246,33 @@ section.art .copyright{
     line-height: 55px;
     text-align: center;
     color:#999;
+}
+
+/*page-3*/
+.page-3{
+    background: #fcfcfd;
+    height:100vh;
+    margin-top:-20px;
+}
+.paage-3 form.search-wrapper{
+   position: relative; 
+}
+.page-3 form.search-wrapper input{
+    background: #ebecec;
+    width:90%;
+    height:30px;
+    border-radius: 30px;
+    position:fixed;
+    left:50%;
+    top:120px;
+    margin-left:-45vw;
+    font-size: 14px;
+    color: #c9c9c9;
+    padding-left: 10px;
+}    
+.page-3 .searchList{
+    width: 100%;
+    border-top:0.5px solid rgba(0,0,0,0.1);;
+    position:fixed;
+    top:165px;
 }

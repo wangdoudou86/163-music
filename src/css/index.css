@@ -9,14 +9,13 @@ h1,h2,h3,h4,h5,h6{font-weight: normal;}
 body{
     font:14px/1.5 Helvetica,sans-serif;
     color: #333;
-    
 }
 /*topbar*/
 .sticky{
     position:fixed;
     top:0;left:0;
     width:100%;
-    z-index: 1;
+    z-index: 2;
 }
 .sticky .topbar{
     display: flex;
@@ -90,6 +89,20 @@ ol.tabs-nav>li.active{
     padding-top:125px;
     background: #fcfcfd;
 }
+.tab-content > li{
+    display: none;
+  }
+.tab-content>li.active{
+    display: block;
+}
+.noCollapse::before{
+    content:'';
+    display: table;
+  }
+  .noCollapse::after{
+    content:'';
+    display: table;
+  }
 .tab-content .page-1 h2{
     font-size:17px;
     padding-left:9px;
@@ -146,7 +159,7 @@ ol.tabs-nav>li.active{
 }
 /*footer*/
 .page-1 section.art{
-    background: url(../img/footer_bg.png); /*这个是相对于css文件的相对路径，不是对于html文件*/
+    background-image: url(../img/footer_bg.png); /*这个是相对于css文件的相对路径，不是对于html文件*/
     background-position: center center;
     background-size:cover;
     margin-top:8px;
@@ -175,15 +188,73 @@ section.art .logo svg{
     color:#d33a31;
     font-size:16px;   
 }
-
-
-
-
-
-
-
 section.art .copyright{
     font-size: 12px;
     line-height: 16px;
     transform: scale(0.75);
+}
+/*tab-content-page2*/
+.page-2{
+    background: #fcfcfd;
+    margin-top:-20px;
+    height: 100vh;
+}
+.page-2 section.hottop{
+   background: url(../img/hot_music_bg.jpg) no-repeat;
+   background-size: contain;
+   padding-top:38.9%;
+   position: relative;
+   overflow: hidden;
+}
+.page-2 section.hottop .hotContent{
+    background: url(../img/hottop.png) no-repeat;
+    background-size: contain;
+    position: absolute;
+    top:0;left:0;
+    width: 166px;
+    height: 97px;
+    z-index: 1;
+}
+.page-2 section.hottop::after{
+    content: '';
+    display: block;
+    width: 100%;
+    height:100%;
+    position: absolute;
+    top:0;left:0;
+    background-color: rgba(0,0,0,.2);
+}
+.page-2 .hotLists{
+
+}
+.page-2 .hotLists>li{  
+    display: flex;
+    align-items: center;
+}
+.page-2 ol>li .index{
+    font-size:17px;
+    padding:0 10px;
+}
+.page-2 ol>li .index.superHot{
+    color: #df3436;
+}
+.page-2 .hotLists>li .song-wrapper{
+    border-bottom:0.5px solid rgba(0,0,0,0.1);
+    padding:7px 0;
+    flex: 1 1 auto;
+}
+.page-2 ol>li .songName{
+    font-size:17px;
+    cursor: pointer;
+}
+.page-2 ol>li .singer{
+    font-size:12px;
+    color:#888;
+    cursor: pointer;    
+}
+.page-2 .hotdn{
+    height:55px;
+    line-height: 55px;
+    text-align: center;
+    color:#999;
 }

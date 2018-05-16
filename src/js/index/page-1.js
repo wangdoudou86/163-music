@@ -1,4 +1,4 @@
-{
+{  
     let view = {
         el:'.page-1',
         init(){
@@ -18,6 +18,8 @@
             this.model = model
             this.view.init()
             this.bindEvents()
+            this.loadModule1()
+            this.loadModule2()
         },
         bindEvents(){
             window.eventHub.on('selectTab',(tabName)=>{
@@ -27,6 +29,16 @@
                     this.view.hide()
                 }
             })
+        },
+        loadModule1(){
+            let script1 = document.createElement('script')
+            script1.src = './js/index/page-1-1.js'  //相对于index.html的路径
+            document.body.appendChild(script1)
+        },
+        loadModule2(){
+            let script2 = document.createElement('script')
+            script2.src = './js/index/page-1-2.js'           
+            document.body.appendChild(script2)        
         }
     }
     controller.init(view,model)
